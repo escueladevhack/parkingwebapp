@@ -1,22 +1,22 @@
 class Utilidad {
 
-  static obtenerFecha(timeStamp) {
-    const d = new Date(timeStamp)
-    let month = '' + (d.getMonth() + 1)
-    let day = '' + d.getDate()
-    let year = d.getFullYear()
+    static obtenerFecha(timeStamp) {
+        const d = new Date(timeStamp)
+        let month = '' + (d.getMonth() + 1)
+        let day = '' + d.getDate()
+        let year = d.getFullYear()
 
-    if (month.length < 2) month = '0' + month
-    if (day.length < 2) day = '0' + day
+        if (month.length < 2) month = '0' + month
+        if (day.length < 2) day = '0' + day
 
-    return [day, month, year].join('/')
-  }
+        return [day, month, year].join('/');
+    }
 
-  static obtenerTemplateParqueaderoVacio(
-    nombreParqueadero,
-    idParqueadero
-  ) {
-    return `<article class="parqueadero" data-id=${idParqueadero}>
+    static obtenerTemplateParqueaderoVacio(
+        nombreParqueadero,
+        idParqueadero
+    ) {
+        return `<article class="parqueadero" data-id=${idParqueadero}>
       <div class="parqueadero-titulo">
           <h5>${nombreParqueadero}</h5>
       </div>
@@ -38,19 +38,19 @@ class Utilidad {
       <div class="parqueadero-footer container">     
       </div>
   </article>`
-  }
+    }
 
-  static obtenerParqueaderoTemplate(
-    nombreParqueadero,
-    nombreCliente,
-    celularCliente,
-    placa,
-    observacion,
-    imagenLink,
-    fecha,
-    idParqueadero
-  ) {
-    return `<article class="parqueadero" data-id=${idParqueadero}>
+    static obtenerParqueaderoTemplate(
+        nombreParqueadero,
+        nombreCliente,
+        celularCliente,
+        placa,
+        observacion,
+        imagenLink,
+        fecha,
+        idParqueadero
+    ) {
+        return `<article class="parqueadero" data-id=${idParqueadero}>
             <div class="parqueadero-ocupado-titulo">
                 <h5>${nombreParqueadero}</h5>
             </div>
@@ -78,6 +78,6 @@ class Utilidad {
                 </div>
             </div>
         </article>`
-  }
+    }
 
 }

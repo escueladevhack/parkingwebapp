@@ -2,7 +2,16 @@ class Autenticacion {
 
   async autEmailPass(email, password) {
     try {
-      // TODO
+      const result = await firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password);
+
+      if (!result.user.emailVerified) {
+        await firebase.auth().signOut();
+        return false;
+      }
+
+      return result;
 
     } catch (error) {
       console.error(error)
@@ -12,13 +21,22 @@ class Autenticacion {
 
   async crearCuentaEmailPass(email, password, nombres) {
     try {
-      // TODO
+      const result = await firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password);
+
+      await result.user.updateProfile({
+        displayName: nombres
+      });
 
       const configuracion = {
-        url: 'https://parking-f75e3.firebaseapp.com/'
+        url: 'https://parkingdevhack.firebaseapp.com'
       }
 
-      // TODO
+      await result.user.sendEmailVerification(configuracion);
+      await firebase.auth().signOut();
+
+      return true;
 
     } catch (error) {
       console.error(error)
@@ -28,7 +46,14 @@ class Autenticacion {
 
   async authCuentaGoogle() {
     try {
-      // TODO
+      const provider = new firebase.auth.GoogleAuthProvider();
+      const result = await firebase.auth().signInWithPopup(provider);
+
+      if(result){
+        return result.user;
+      }
+
+      return undefined;
     } catch (error) {
       console.error(error)
       Materialize.toast(`Error al autenticarse con google: ${error} `, 4000)
@@ -37,7 +62,14 @@ class Autenticacion {
 
   async authCuentaFacebook() {
     try {
-      // TODO
+      const provider = new firebase.auth.FacebookAuthProvider();
+      const result = await firebase.auth().signInWithPopup(provider);
+
+      if(result){
+        return result.user;
+      }
+
+      return undefined;
     } catch (error) {
       console.error(error)
       Materialize.toast(`Error al autenticarse con google: ${error} `, 4000)
