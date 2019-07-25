@@ -85,7 +85,8 @@ $(() => {
         parqueadero.observacion,
         parqueadero.imagenLink,
         Utilidad.obtenerFecha(parqueadero.fecha.toDate()),
-        parqueadero.id
+        parqueadero.id,
+        parqueadero.idEntrada
       )
     }
     $('#parqueaderos').append(parqueaderoHtml);

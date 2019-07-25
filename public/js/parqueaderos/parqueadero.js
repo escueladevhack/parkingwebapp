@@ -21,12 +21,10 @@ class Parqueadero {
   }
 
   async crearSalida(
-    uid,
-    idParqueadero,
-    nombreCliente,
-    placa,
-    celularCliente,
-    observacion) {
+    idEntrada,
+    fechaSalida,
+    costo,
+    idParqueadero) {
     try {
       // TODO
 
